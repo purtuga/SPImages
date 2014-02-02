@@ -283,6 +283,14 @@ module.exports = function(grunt) {
                 
             },
             
+            // Store: store the built spa in the src folder.
+            store: {
+                src:        '<%= buildRootDir %>/build/**/*',
+                dest:       'utility/',
+                expand:     true,
+                flatten:    true
+            }, // end: store
+            
             deploy: {
                 options : {
             
@@ -366,7 +374,8 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         "clean:build", 
         "newer:copy:stage", 
-        "newer:copy:build"
+        "newer:copy:build",
+        "newer:copy:store"
     ]);
         
     
