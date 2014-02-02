@@ -30,3 +30,5 @@ SCCS
 _$*
 node_modules
 me.build.json
+.settings*
+.project
