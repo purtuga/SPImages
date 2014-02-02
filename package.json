@@ -1,0 +1,24 @@
+{
+    "name":         "SPImages",
+    "version":      "0.9.0",
+    "description":  "SharePoint List of Available Images",
+    "main":         "build/SPImages.aspx",
+    "scripts":      {
+        "test":     "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository":   {
+        "type":     "git",
+        "url":      "./.git"
+    },
+    "author":           "Paul Tavares",
+    "license":          "TBD",
+    "gitHead":          "",
+    "devDependencies":  {
+        "grunt":                "~0.4.1",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-uglify": "~0.2.0",
+        "grunt-contrib-clean":  "~0.4.0",
+        "grunt-contrib-copy":   "~0.4.1",
+        "grunt-newer":          "~0.6.0"
+    }
+}

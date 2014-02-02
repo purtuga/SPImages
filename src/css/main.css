@@ -1,0 +1,130 @@
+/**
+ * Main style sheet for SPimages
+ * 
+ * (c) @YEAR Paul Tavares | MIT License
+ */
+#sp_img_cntr {
+    margin-bottom: 10em;
+}
+#sp_img_cntr a {
+    display: inline-block;
+    margin-right: .2em;
+    border: 1px solid white;
+}
+#sp_img_cntr a img {
+    border: 1px solid white;
+}
+#sp_img_cntr a:hover,
+#sp_img_cntr a.sp-img-selected {
+    border-color: lightgray;
+}
+#sp_img_cntr a:hover img {
+    border: 1px solid darkgray;
+}
+#sp_img_cntr img {
+    display: inline-block;
+    margin: 2em;
+}
+
+/* reset image styles above that impact SP info. dialogs in SP2013 */
+#sp_img_cntr div.ms-status-msg img {
+    display: inline;
+    margin: auto;
+}
+
+
+/* hide side quicklinks panel (SP2010, 2013) */
+#s4-leftpanel,
+#sideNavBox {
+    display:none !important;
+}
+.s4-ca,
+#contentBox {
+    margin-left: .5em !important;
+    width: 98%;
+}
+
+#imginfo {
+    position: fixed;
+    width: 98%;
+    bottom: 0px;
+    padding: .5em;
+    background-color: lightgray;
+    border: 1px solid darkgray;
+    z-index: 100;
+    font-weight: bold;
+}
+
+#imginfo img {
+    vertical-align: middle;
+}
+
+#imginfo .cntr {
+    width: 98%;
+    margin: auto auto auto 0.5%;
+}
+
+/* float container: ensure items before/after do not float */
+.float-cntr:before,
+.float-cntr:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.float-cntr:after {
+    clear: both;
+}
+
+.sp-img-disabled {
+    opacity: .4;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE8 :-( */
+}
+
+#sp_img_menu {
+    text-align: right;
+    float: right;
+}
+
+#sp_img_info_cntr {
+    float: left;
+    width: 60%;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 0.2em;
+}
+
+#sp_img_src_data,
+#sp_img_dimensions,
+#sp_img_remember_cntr {
+    float: left;
+}
+
+#sp_img_dimensions {
+    width: 15%;
+}
+#sp_img_src_data {
+    width: 79%;
+    position: relative;
+}
+
+#img_width,
+#img_height {
+    min-width: 5em;
+}
+
+#sp_img_src_data input {
+    width: 79%;
+    font-family: Courier;
+}
+#sp_img_src_data label {
+    display: inline-block;
+    width: 17%;
+}
+
+#sp_img_bookmarks {
+    display: inline-block;
+    position: relative;
+    margin-right: 1em;
+}
+
+
