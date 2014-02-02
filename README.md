@@ -9,7 +9,7 @@ Install
 
 This utility is contained within one single _aspx_ page located in the _utility_ folder.
 
-1. Download the [SPImage.aspx]() file from the utility directory
+1. Download the [SPImage.aspx](utility/) file from the utility directory
 2. Upload the SPImage.aspx file to a Document Library on a SharePoint site
 3. Browse to the Document Library folder where the SPImage.aspx file was uploaded to (step 2) and click on it
 
