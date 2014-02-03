@@ -32,7 +32,7 @@
     </style>
     
     <script type="text/javascript">
-        document.write(
+        !window.jQuery && document.write(
             '<script src="/' + 
             '/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></' +
             'script>'
@@ -57,6 +57,9 @@
 
 <div id="sp_main_cntr"></div>
 <div id="sp_img_cntr"></div>
+<div id="sp_img_footer_cntr">
+   v@VERSION (@BUILD) | &copy; @YEAR Paul Tavares | MIT License | <a href="https://github.com/purtuga/SPImages/">github</a>
+</div>
 <script id="sp_2007_img_src" type="text/text">
 // BUILD_INCLUDE('<%= buildRootDir %>src/data/sp2007.txt')
 </script>
@@ -67,21 +70,21 @@
 // BUILD_INCLUDE('<%= buildRootDir %>src/data/sp2013.txt')
 </script>
 <script id="sp_img_msg_about" type="text/text">
-<div style="margin: 1em .5em;font-size:1.2em;">
-    <p>
-    This tool allows you to browse the set of images that should be available with out-of-the-box SharePoint
-    installations. This utility contains a static list of known available images for each SharePoint
-    version and does not have direct access to the server location where they are stored. For that
-    reason, this list is not considered to be a complete set. Additional images may be available
-    on your farm that this tool will not display.        
-    </p>
-    <p>
-    Select a SharePoint version and image types from the drop-downs at the bottom. 
-    Browse images by paging forward or backwards. As you browse through the many pages of content,
-    selected images can be remembered by clicking icon next to the image information (down below).        
-    </p>
-
-</div>
+    <div style="margin: 1em .5em;font-size:1.2em;">
+        <p>
+        This tool allows you to browse the set of images that should be available with out-of-the-box SharePoint
+        installations. This utility contains a static list of known available images for each SharePoint
+        version and does not have direct access to the server location where they are stored. For that
+        reason, this list is not considered to be a complete set. Additional images may be available
+        on your farm that this tool will not display.
+        </p>
+        <p>
+        Select a SharePoint version and an image type filter from the drop-downs at the bottom. 
+        Browse images by paging forward or backwards. As you browse through the many pages of content,
+        selected images can be remembered by clicking icon next to the image information.        
+        </p>
+    
+    </div>
 </script>
 <div id="imginfo" style="display:none;">
     <div class="cntr float-cntr">

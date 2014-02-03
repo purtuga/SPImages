@@ -14,7 +14,7 @@
     "use strict";
     
     /*jslint nomen: true, plusplus: true */ 
-    /*global SP, _spBodyOnLoadFunctionNames */
+    /*global SP, _spBodyOnLoadFunctionNames, ExecuteOrDelayUntilScriptLoaded */
     
     // Execute our code when DOM is ready.
     $(function(){
@@ -532,8 +532,7 @@
             // Bind change event to the Image Types select box
             app.$imgTypes.add(app.$spVersion).on("change", function(){
                 
-                var $this   = $(this);
-                
+                var $this           = $(this);
                 app.currentImgObj   = null;
                 app.currentPage     = 0;
                 
@@ -713,7 +712,11 @@
         
         
         // INITIALIZE APP
-        if (typeof _spBodyOnLoadFunctionNames !== "undefined") {
+        if (typeof ExecuteOrDelayUntilScriptLoaded !== "undefined") {
+            
+            ExecuteOrDelayUntilScriptLoaded( app.init, "sp.js" );
+            
+        } else if (typeof _spBodyOnLoadFunctionNames !== "undefined") {
             
             window.imgInitTempFunc = function() {
                 
@@ -731,6 +734,6 @@
             
         }
         
-    });// end: $(function)
+    });// end: $(function())
 
 })(jQuery);

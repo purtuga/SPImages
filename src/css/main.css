@@ -3,9 +3,6 @@
  * 
  * (c) @YEAR Paul Tavares | MIT License
  */
-#sp_img_cntr {
-    margin-bottom: 10em;
-}
 #sp_img_cntr a {
     display: inline-block;
     margin-right: .2em;
@@ -32,6 +29,13 @@
     margin: auto;
 }
 
+#sp_img_footer_cntr {
+    margin: 20em 0em 10em;
+    padding: 1em;
+    text-align: center;
+    font-size: .8em;
+    font-style: italic;
+}
 
 /* hide side quicklinks panel (SP2010, 2013) */
 #s4-leftpanel,
