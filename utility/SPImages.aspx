@@ -33,9 +33,6 @@
  * 
  * (c) 2014 Paul Tavares | MIT License
  */
-#sp_img_cntr {
-    margin-bottom: 10em;
-}
 #sp_img_cntr a {
     display: inline-block;
     margin-right: .2em;
@@ -62,6 +59,13 @@
     margin: auto;
 }
 
+#sp_img_footer_cntr {
+    margin: 20em 0em 10em;
+    padding: 1em;
+    text-align: center;
+    font-size: .8em;
+    font-style: italic;
+}
 
 /* hide side quicklinks panel (SP2010, 2013) */
 #s4-leftpanel,
@@ -162,7 +166,7 @@
     </style>
     
     <script type="text/javascript">
-        document.write(
+        !window.jQuery && document.write(
             '<script src="/' + 
             '/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></' +
             'script>'
@@ -177,7 +181,7 @@
  * displayed in "pages" of x amount of images only.
  * 
  * Version: 0.9.0
- * Build:   1391371714787
+ * Build:   1391635370919
  * 
  * (c) 2014 Paul Tavares | MIT License
  */
@@ -186,7 +190,7 @@
     "use strict";
     
     /*jslint nomen: true, plusplus: true */ 
-    /*global SP, _spBodyOnLoadFunctionNames */
+    /*global SP, _spBodyOnLoadFunctionNames, ExecuteOrDelayUntilScriptLoaded */
     
     // Execute our code when DOM is ready.
     $(function(){
@@ -595,7 +599,8 @@
             app.$popup.on("click", "a", function(){
                 
                 var $this   = $(this),
-                    id      = $(this).attr("id") || "";
+                    id      = $(this).attr("id") || "",
+                    tmp     = '';
                 
                 if ($this.is(".sp-img-disabled")) {
                     
@@ -635,12 +640,16 @@
                         
                         if (app.$imgHtml.val()) {
                             
-                            app.bookmarks.images.push(
-                                '<a href="javascript:">' + 
-                                app.$currentImg.html() + '</a>'
-                            );
-                            app.$bkmrkCount.html( app.bookmarks.images.length );
-                            app.$bookmarks.removeClass("sp-img-disabled");
+                            tmp = '<a href="javascript:">' + 
+                                    app.$currentImg.html() + '</a>'
+                            
+                            if ($.inArray(tmp, app.bookmarks.images) < 0) {
+                                
+                                app.bookmarks.images.push( tmp );
+                                app.$bkmrkCount.html( app.bookmarks.images.length );
+                                app.$bookmarks.removeClass("sp-img-disabled");
+                                
+                            }
                             
                         }
                         
@@ -704,8 +713,7 @@
             // Bind change event to the Image Types select box
             app.$imgTypes.add(app.$spVersion).on("change", function(){
                 
-                var $this   = $(this);
-                
+                var $this           = $(this);
                 app.currentImgObj   = null;
                 app.currentPage     = 0;
                 
@@ -885,7 +893,11 @@
         
         
         // INITIALIZE APP
-        if (typeof _spBodyOnLoadFunctionNames !== "undefined") {
+        if (typeof ExecuteOrDelayUntilScriptLoaded !== "undefined") {
+            
+            ExecuteOrDelayUntilScriptLoaded( app.init, "sp.js" );
+            
+        } else if (typeof _spBodyOnLoadFunctionNames !== "undefined") {
             
             window.imgInitTempFunc = function() {
                 
@@ -903,7 +915,7 @@
             
         }
         
-    });// end: $(function)
+    });// end: $(function())
 
 })(jQuery);
     </script>
@@ -922,6 +934,9 @@
 
 <div id="sp_main_cntr"></div>
 <div id="sp_img_cntr"></div>
+<div id="sp_img_footer_cntr">
+   v0.9.0 (1391635370919) | &copy; 2014 Paul Tavares | MIT License | <a href="https://github.com/purtuga/SPImages/">github</a>
+</div>
 <script id="sp_2007_img_src" type="text/text">
 <img src="/_layouts/images/32316.GIF" data-metadata="{&quot;width&quot;:16,&quot;height&quot;:16,&quot;isSmall&quot;:true,&quot;isMedium&quot;:false,&quot;isLarge&quot;:false}">
 <img src="/_layouts/images/ACA16.GIF" data-metadata="{&quot;width&quot;:16,&quot;height&quot;:16,&quot;isSmall&quot;:true,&quot;isMedium&quot;:false,&quot;isLarge&quot;:false}">
@@ -7251,21 +7266,21 @@
 
 </script>
 <script id="sp_img_msg_about" type="text/text">
-<div style="margin: 1em .5em;font-size:1.2em;">
-    <p>
-    This tool allows you to browse the set of images that should be available with out-of-the-box SharePoint
-    installations. This utility contains a static list of known available images for each SharePoint
-    version and does not have direct access to the server location where they are stored. For that
-    reason, this list is not considered to be a complete set. Additional images may be available
-    on your farm that this tool will not display.        
-    </p>
-    <p>
-    Select a SharePoint version and image types from the drop-downs at the bottom. 
-    Browse images by paging forward or backwards. As you browse through the many pages of content,
-    selected images can be remembered by clicking icon next to the image information (down below).        
-    </p>
-
-</div>
+    <div style="margin: 1em .5em;font-size:1.2em;">
+        <p>
+        This tool allows you to browse the set of images that should be available with out-of-the-box SharePoint
+        installations. This utility contains a static list of known available images for each SharePoint
+        version and does not have direct access to the server location where they are stored. For that
+        reason, this list is not considered to be a complete set. Additional images may be available
+        on your farm that this tool will not display.
+        </p>
+        <p>
+        Select a SharePoint version and an image type filter from the drop-downs at the bottom. 
+        Browse images by paging forward or backwards. As you browse through the many pages of content,
+        selected images can be remembered by clicking icon next to the image information.        
+        </p>
+    
+    </div>
 </script>
 <div id="imginfo" style="display:none;">
     <div class="cntr float-cntr">
@@ -7298,10 +7313,10 @@
                     <span id="sp_img_total_pages"></span>
                 </span>
                 <a href="javascript:" id="sp_img_page_prev">
-                    <img src="/_layouts/images/workflowstatus_RTLarrow.png"/>
+                    <img src="/_layouts/images/PLPLAYR2.GIF"/>
                 </a>
                 <a href="javascript:" id="sp_img_page_next">
-                    <img src="/_layouts/images/workflowstatus_LTRarrow.png"/>
+                    <img src="/_layouts/images/PLPLAY2.GIF"/>
                 </a>
             </div>
             
@@ -7325,7 +7340,7 @@
             </div>
             <div id="sp_img_remember_cntr">
                 <a id="sp_img_remember" href="javascript:" title="Remember this Image">
-                    <img src="/_layouts/images/ctoa32.png"/>
+                    <img src="/_layouts/images/icon_tasklist.gif"/>
                 </a>
             </div>
         </div>
