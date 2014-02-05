@@ -423,7 +423,8 @@
             app.$popup.on("click", "a", function(){
                 
                 var $this   = $(this),
-                    id      = $(this).attr("id") || "";
+                    id      = $(this).attr("id") || "",
+                    tmp     = '';
                 
                 if ($this.is(".sp-img-disabled")) {
                     
@@ -463,12 +464,16 @@
                         
                         if (app.$imgHtml.val()) {
                             
-                            app.bookmarks.images.push(
-                                '<a href="javascript:">' + 
-                                app.$currentImg.html() + '</a>'
-                            );
-                            app.$bkmrkCount.html( app.bookmarks.images.length );
-                            app.$bookmarks.removeClass("sp-img-disabled");
+                            tmp = '<a href="javascript:">' + 
+                                    app.$currentImg.html() + '</a>'
+                            
+                            if ($.inArray(tmp, app.bookmarks.images) < 0) {
+                                
+                                app.bookmarks.images.push( tmp );
+                                app.$bkmrkCount.html( app.bookmarks.images.length );
+                                app.$bookmarks.removeClass("sp-img-disabled");
+                                
+                            }
                             
                         }
                         
