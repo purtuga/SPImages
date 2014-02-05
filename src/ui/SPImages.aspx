@@ -117,10 +117,10 @@
                     <span id="sp_img_total_pages"></span>
                 </span>
                 <a href="javascript:" id="sp_img_page_prev">
-                    <img src="/_layouts/images/workflowstatus_RTLarrow.png"/>
+                    <img src="/_layouts/images/PLPLAYR2.GIF"/>
                 </a>
                 <a href="javascript:" id="sp_img_page_next">
-                    <img src="/_layouts/images/workflowstatus_LTRarrow.png"/>
+                    <img src="/_layouts/images/PLPLAY2.GIF"/>
                 </a>
             </div>
             
@@ -144,7 +144,7 @@
             </div>
             <div id="sp_img_remember_cntr">
                 <a id="sp_img_remember" href="javascript:" title="Remember this Image">
-                    <img src="/_layouts/images/ctoa32.png"/>
+                    <img src="/_layouts/images/icon_tasklist.gif"/>
                 </a>
             </div>
         </div>
